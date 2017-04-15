@@ -34,7 +34,7 @@ make
 ./qmlnotify
 ```
 
-#### Securing it
+## Securing qmlnotify
 This fork of qmlnotify contains an (probably poorly written) AppArmor profile,
 which restricts qmlnotify as much as possible.
 
