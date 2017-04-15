@@ -34,3 +34,13 @@ make
 ./qmlnotify
 ```
 
+#### Securing it
+This fork of qmlnotify contains an (probably poorly written) AppArmor profile,
+which restricts qmlnotify as much as possible.
+
+To make it work, copy `qmlnotify`, after building it, to
+`/usr/local/bin/qmlnotify`. Then copy the AppArmor profile `apparmor/qmlnotify`
+to `/etc/apparmor.d/custom/qmlnotify` and enable it using `apparmor_parser -a /etc/apparmor.d/custom/qmlnotify` (Using sudo may be required).
+
+Please note that the profile will **not** survive a reboot and will need to be
+reactivated.
