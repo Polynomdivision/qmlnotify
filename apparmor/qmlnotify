@@ -20,10 +20,15 @@ include <tunables/global>
   deny /usr/** wx,
   deny /var/** rwxlm,
 
+  # Allow access to the global component directory
+  allow /etc/qmlnotify/** r,
+
   # Only allow access to the cache of qmlnotify 
-  audit deny @{HOME}/{**^.cache/qmlnotify,} rwxml,
+  audit deny @{HOME}/{**^.cache/qmlnotify,.config/qmlnotify} rwxml,
   audit allow @{HOME}/.cache/qmlnotify/** rix,
- 
+  # And to the user component directory
+  allow @{HOME}/.config/qmlnotify/** r,
+
   # Devices
   # nVidia only: Access to the GPU
   allow /dev/nvidiactl rw,
