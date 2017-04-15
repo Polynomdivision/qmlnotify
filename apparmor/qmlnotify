@@ -27,7 +27,7 @@ include <tunables/global>
   audit deny @{HOME}/{**^.cache/qmlnotify,.config/qmlnotify} rwxml,
   audit allow @{HOME}/.cache/qmlnotify/** rix,
   # And to the user component directory
-  allow @{HOME}/.config/qmlnotify/** r,
+  allow @{HOME}/.config/qmlnotify/* rm,
 
   # Devices
   # nVidia only: Access to the GPU
