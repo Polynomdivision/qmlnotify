@@ -1,0 +1,39 @@
+include <tunables/global>
+
+/usr/local/bin/qmlnotify {
+  include <abstractions/base>
+  include <abstractions/dbus-session>
+  include <abstractions/X>
+  include <abstractions/fonts>
+  include <abstractions/consoles>  
+
+  # Deny everything we don't need
+  deny /bin/** rwxlm,
+  deny /boot/** rwxlm,
+  deny /dev/{**^{u,}random,**^tty} rw,
+  deny /etc/** rwxlm, # TODO: FontConfig
+  deny /mnt/** rwxlm, 
+  deny /opt/** rwxlm,
+  deny /root/** rwxlm,
+  deny /run/** rwxlm,
+  deny /srv/** rwxlm,
+  deny /usr/** wx,
+  deny /var/** rwxlm,
+
+  # Only allow access to the cache of qmlnotify 
+  audit deny @{HOME}/{**^.cache/qmlnotify,} rwxml,
+  audit allow @{HOME}/.cache/qmlnotify/** rix,
+ 
+  # Devices
+  # nVidia only: Access to the GPU
+  allow /dev/nvidiactl rw,
+  allow /dev/nvidia0 rw,
+  allow /dev/nvidia-modeset rw,
+
+  allow /dev/tty w,
+  allow /dev/{u,}random r,
+  allow /proc/modules r,
+
+  # We don't need network access
+  deny network,
+}
