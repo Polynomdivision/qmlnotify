@@ -15,6 +15,10 @@ Desktop notification server which implements org.freedesktop.Notifications, usin
 * Write your own qml component and start the server with param `--qml $YOUR_QML_NOTIFICATION_COMPONENT`
 * Enjoy!
 
+The qml component can be either at `/etc/qmlnotify/` or `$HOME/.config/qmlnotify/`.
+Keep in mind that the last path (`$HOME/.config/qmlnotify`) will be prefered when
+looking for the qml component.
+
 ## Building instructions
 
 #### Install needed packages (arch examples)
