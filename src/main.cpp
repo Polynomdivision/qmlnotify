@@ -18,8 +18,8 @@ const std::array<QString, 2> search_paths = {
 // Returns "" if the component is not in the search paths.
 QString get_component_path(QString component) {
     for (unsigned int i = 0; i < search_paths.size(); i++) {
-        // qDebug() << "Checking" << search_paths[i];
-        // qDebug() << search_paths[i] + component;
+        // qDebug() << "Debug: Checking" << search_paths[i];
+        // qDebug() << "Debug:" << search_paths[i] + component;
 	if (QFile::exists(search_paths[i] + component)) {
 	    return search_paths[i] + component;
 	}
