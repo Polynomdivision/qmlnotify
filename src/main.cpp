@@ -29,8 +29,33 @@ QString get_component_path(QString component) {
     return QString("");
 }
 
+// Checks if the search path directories exist.
+// Returns true if at least 1 exists, false if
+// otherwise.
+bool check_component_directories() {
+    unsigned int existing = 0;
+    
+    for(unsigned int i = 0; i < search_paths.size(); i++) {
+        if (QFile::exists(search_paths[i]))
+            existing += 1;
+	else
+	    qDebug() << "Info:" << search_paths[i] << "does not exist";
+    }
+
+    if (existing != 0) {
+        return true;
+    } else {
+        qDebug() << "Error: No component directory exists!";
+	return false;
+    }
+}
+
 int main(int argc, char *argv[])
 {
+    // Startup check
+    if (!check_component_directories())
+        return 1;
+
     QGuiApplication app(argc, argv);
 
     QGuiApplication::setQuitOnLastWindowClosed(false);
