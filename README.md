@@ -16,8 +16,11 @@ Desktop notification server which implements org.freedesktop.Notifications, usin
 * Enjoy!
 
 The qml component can be either at `/etc/qmlnotify/` or `$HOME/.config/qmlnotify/`.
+
 Keep in mind that the last path (`$HOME/.config/qmlnotify`) will be prefered when
 looking for the qml component.
+
+**NOTE**: Currently, the AppArmor profile is not configured to allow access to `/etc/qmlnotify`
 
 ## Building instructions
 
